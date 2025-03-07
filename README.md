@@ -1,9 +1,3 @@
-# Frontend Mentor - Kanban task management web app solution
-
-- [this project YouTube video Tutorial](https://www.youtube.com/watch?v=3RWMktZNsJQ&t=1707s)
-
-This is a solution to the [Kanban task management web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/kanban-task-management-web-app-wgQLt-HlbB). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
-
 ## Table of contents
 
 - [Overview](#overview)
@@ -52,7 +46,7 @@ Bonus:
 
 ### Links
 
-- Live Site URL: [link](https://kanban-task-management-react-tailwind.vercel.app/)
+- Live Site URL: [link](https://richawebcreator-task-manager-react.netlify.app)
 
 ### Built with
 
