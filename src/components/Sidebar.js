@@ -53,16 +53,15 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
                 <div>
                   {boards.map((board, index) => (
                     <div
-                      className={` flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${
-                        board.isActive &&
+                      className={` flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${board.isActive &&
                         " bg-[#635fc7] rounded-r-full text-white mr-8 "
-                      } `}
+                        } `}
                       key={index}
                       onClick={() => {
                         dispatch(boardsSlice.actions.setBoardActive({ index }));
                       }}
                     >
-                      <img src={boardIcon} className="  filter-white  h-4 " />{" "}
+                      <img src={boardIcon} alt="boardIcon" className="  filter-white  h-4 " />{" "}
                       <p className=" text-lg font-bold ">{board.name}</p>
                     </div>
                   ))}
@@ -73,7 +72,7 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
                       setIsBoardModalOpen(true);
                     }}
                   >
-                    <img src={boardIcon} className="   filter-white  h-4 " />
+                    <img src={boardIcon} alt="boardIcon" className="   filter-white  h-4 " />
                     <p className=" text-lg font-bold  ">Create New Board </p>
                   </div>
                 </div>
@@ -84,14 +83,12 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
                   <Switch
                     checked={darkSide}
                     onChange={toggleDarkMode}
-                    className={`${
-                      darkSide ? "bg-[#635fc7]" : "bg-gray-200"
-                    } relative inline-flex h-6 w-11 items-center rounded-full`}
+                    className={`${darkSide ? "bg-[#635fc7]" : "bg-gray-200"
+                      } relative inline-flex h-6 w-11 items-center rounded-full`}
                   >
                     <span
-                      className={`${
-                        darkSide ? "translate-x-6" : "translate-x-1"
-                      } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                      className={`${darkSide ? "translate-x-6" : "translate-x-1"
+                        } inline-block h-4 w-4 transform rounded-full bg-white transition`}
                     />
                   </Switch>
 

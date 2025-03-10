@@ -176,6 +176,7 @@ function AddEditTaskModal({
               />
               <img
                 src={crossIcon}
+                alt="cross icon"
                 onClick={() => {
                   onDelete(subtask.id);
                 }}
@@ -222,7 +223,7 @@ function AddEditTaskModal({
             }}
             className=" w-full items-center text-white bg-[#635fc7] py-2 rounded-full "
           >
-           {type === "edit" ? " save edit" : "Create task"}
+            {type === "edit" ? " save edit" : "Create task"}
           </button>
         </div>
       </div>
