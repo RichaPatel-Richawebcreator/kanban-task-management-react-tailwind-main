@@ -21,8 +21,6 @@ function AddEditTaskModal({
   );
 
   const columns = board.columns;
-  const col = columns.find((col, index) => index === prevColIndex);
-  const task = col ? col.tasks.find((task, index) => index === taskIndex) : [];
   const [status, setStatus] = useState(columns[prevColIndex].name);
   const [newColIndex, setNewColIndex] = useState(prevColIndex);
   const [subtasks, setSubtasks] = useState([
