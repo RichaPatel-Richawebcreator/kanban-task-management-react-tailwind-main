@@ -4,7 +4,7 @@ import boardsSlice from "../redux/boardsSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 
-function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
+function AddEditBoardModal({ setIsBoardModalOpen, type, }) {
   const dispatch = useDispatch();
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
     { name: "Todo", tasks: [], id: uuidv4() },
     { name: "Doing", tasks: [], id: uuidv4() },
   ]);
-  const [isValid, setIsValid] = useState(true);
+  // Removed unused isValid state
   const board = useSelector((state) => state.boards).find(
     (board) => board.isActive
   );
@@ -28,16 +28,14 @@ function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
   }
 
   const validate = () => {
-    setIsValid(false);
     if (!name.trim()) {
       return false;
     }
-    for (let i = 0 ; i < newColumns.length ; i++) {
+    for (let i = 0; i < newColumns.length; i++) {
       if (!newColumns[i].name.trim()) {
         return false;
       }
     }
-    setIsValid(true);
     return true;
   };
 

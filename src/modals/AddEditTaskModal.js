@@ -14,7 +14,6 @@ function AddEditTaskModal({
 }) {
   const dispatch = useDispatch();
   const [isFirstLoad, setIsFirstLoad] = useState(true);
-  const [isValid, setIsValid] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const board = useSelector((state) => state.boards).find(
@@ -45,8 +44,31 @@ function AddEditTaskModal({
     setNewColIndex(e.target.selectedIndex);
   };
 
+  // Remove unused variables
+  // const col = columns.find((col, index) => index === prevColIndex);
+  // const task = col ? col.tasks.find((task, index) => index === taskIndex) : [];
+
+  // Handle edit mode initialization
+  React.useEffect(() => {
+    if (type === "edit" && isFirstLoad) {
+      const col = columns.find((col, index) => index === prevColIndex);
+      const task = col ? col.tasks.find((task, index) => index === taskIndex) : null;
+      if (task) {
+        setSubtasks(
+          task.subtasks.map((subtask) => {
+            return { ...subtask, id: uuidv4() };
+          })
+        );
+        setTitle(task.title);
+        setDescription(task.description);
+        setIsFirstLoad(false);
+      }
+    }
+    // eslint-disable-next-line
+  }, [type, isFirstLoad, columns, prevColIndex, taskIndex]);
+
+  // Validation function
   const validate = () => {
-    setIsValid(false);
     if (!title.trim()) {
       return false;
     }
@@ -55,25 +77,15 @@ function AddEditTaskModal({
         return false;
       }
     }
-    setIsValid(true);
     return true;
   };
 
-  if (type === "edit" && isFirstLoad) {
-    setSubtasks(
-      task.subtasks.map((subtask) => {
-        return { ...subtask, id: uuidv4() };
-      })
-    );
-    setTitle(task.title);
-    setDescription(task.description);
-    setIsFirstLoad(false);
-  }
-
+  // Delete subtask handler
   const onDelete = (id) => {
     setSubtasks((prevState) => prevState.filter((el) => el.id !== id));
   };
 
+  // Submit handler
   const onSubmit = (type) => {
     if (type === "add") {
       dispatch(
@@ -164,7 +176,7 @@ function AddEditTaskModal({
           </label>
 
           {subtasks.map((subtask, index) => (
-            <div key={index} className=" flex items-center w-full ">
+            <div key={subtask.id} className=" flex items-center w-full ">
               <input
                 onChange={(e) => {
                   onChangeSubtasks(subtask.id, e.target.value);

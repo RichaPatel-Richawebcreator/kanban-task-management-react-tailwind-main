@@ -5,7 +5,7 @@ import boardsSlice from "../redux/boardsSlice";
 import Task from "./Task";
 
 function Column({ colIndex }) {
-  const colors = [
+  const colors = React.useMemo(() => [
     "bg-red-500",
     "bg-orange-500",
     "bg-blue-500",
@@ -15,7 +15,7 @@ function Column({ colIndex }) {
     "bg-yellow-500",
     "bg-pink-500",
     "bg-sky-500",
-  ];
+  ], []);
 
 
 
@@ -26,7 +26,7 @@ function Column({ colIndex }) {
   const col = board.columns.find((col, i) => i === colIndex);
   useEffect(() => {
     setColor(shuffle(colors).pop())
-  }, [dispatch, colors]);
+  }, [colors]);
 
 
 
