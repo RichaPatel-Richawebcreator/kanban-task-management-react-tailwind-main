@@ -26,7 +26,7 @@ function Column({ colIndex }) {
   const col = board.columns.find((col, i) => i === colIndex);
   useEffect(() => {
     setColor(shuffle(colors).pop())
-  }, [dispatch]);
+  }, [dispatch, colors]);
 
 
 
