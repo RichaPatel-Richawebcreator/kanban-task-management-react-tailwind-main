@@ -115,6 +115,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
               />
               <img
                 src={crossIcon}
+                alt="delete icon"
                 onClick={() => {
                   onDelete(column.id);
                 }}
